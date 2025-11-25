@@ -122,20 +122,17 @@ if __name__ == "__main__":
         3: "Car drives fast on the road"
     }
 
-    print("Building inverted index...\n")
     index = build_index(docs)
 
     print("Inverted index:")
     for term, postings in index.items():
         print(term, postings)
 
-    print("\nWriting postings to file...")
     offsets = write_postings(index)
 
     print("\nOffsets:")
     print(offsets)
 
-    print("\nBuilding B-Tree...")
     tree = BTree(t=3)
     for term, off in offsets.items():
         tree.insert(term, off)
@@ -143,4 +140,4 @@ if __name__ == "__main__":
     print("\nB-Tree structure:")
     tree.print_tree()
 
-    print("\nDone!")
+
